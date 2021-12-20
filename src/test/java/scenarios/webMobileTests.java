@@ -1,27 +1,34 @@
 package scenarios;
 
+import static data.SearchRequest.getRequest;
+import static org.testng.Assert.assertTrue;
+
+import com.google.common.collect.ImmutableMap;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+import pageObjects.webApp.GoogleMainPage;
+import pageObjects.webApp.GoogleSearchPage;
 import setup.BaseTest;
 
 public class webMobileTests extends BaseTest {
 
-    @Test(groups = {"web"}, description = "Make sure that we've opened IANA homepage")
-    public void simpleWebTest() throws InterruptedException {
-        getDriver().get("http://iana.org"); // open IANA homepage
+    @Test(groups = {"web"}, description = "EPAM search results in Google")
+    public void findEpamInGoogleTest() throws InterruptedException {
+        GoogleMainPage googleMainPage = new GoogleMainPage(getDriver());
+        GoogleSearchPage googleSearchPage = new GoogleSearchPage(getDriver());
+        getDriver().get("https://www.google.com/");
 
-        // Make sure that page has been loaded completely
         new WebDriverWait(getDriver(), 10).until(
-                wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
+            wd -> ((JavascriptExecutor) wd).executeScript("return document.readyState").equals("complete")
         );
+        googleMainPage.searchEPAM(getRequest());
+        getDriver().executeScript("mobile: performEditorAction", ImmutableMap.of("action", "search"));
+        assertTrue(googleSearchPage.getSearchResultHeaderStrings(googleSearchPage.getSearchResultHeaderElements())
+                                   .stream().allMatch(s -> s.contains(getRequest())));
 
-        // Check IANA homepage title
-        assert ((WebDriver) getDriver()).getTitle().equals("Internet Assigned Numbers Authority") : "This is not IANA homepage";
-
-        // Log that test finished
-        System.out.println("Site opening done");
+        assertTrue(googleSearchPage
+            .getSearchResultDescriptionStrings(googleSearchPage.getSearchResultDescriptionElements())
+            .stream().allMatch(s -> s.contains(getRequest())));
     }
-
 }

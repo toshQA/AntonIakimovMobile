@@ -7,21 +7,22 @@ import java.io.FileReader;
 
 public class UserData {
 
-    static Object obj;
+    static Object userObject;
 
     static {
         try {
-            obj = new JsonParser().parse(new FileReader("src/test/resources/users.json"));
+            userObject = new JsonParser().parse(new FileReader("src/test/resources/users.json"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    static JsonObject jo = (JsonObject) obj;
+    static JsonObject user = (JsonObject) userObject;
 
-    static String email = String.valueOf(jo.get("email"));
-    static String username = String.valueOf(jo.get("username"));
-    static String password = String.valueOf(jo.get("password"));
+
+    static String email = user.get("email").getAsString();
+    static String username = user.get("username").getAsString();
+    static String password = user.get("password").getAsString();
 
     public static String getEmail() {
         return email;
@@ -34,4 +35,9 @@ public class UserData {
     public static String getPassword() {
         return password;
     }
+
+    public static JsonObject getUser() {
+        return user;
+    }
+
 }
