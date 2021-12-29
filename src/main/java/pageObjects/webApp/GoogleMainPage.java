@@ -14,7 +14,7 @@ public class GoogleMainPage extends WebPageObject {
         super(appiumDriver);
     }
 
-    public void searchEPAM(String request) {
+    public void searchRequest(String request) {
         searchField.sendKeys(request);
     }
 }

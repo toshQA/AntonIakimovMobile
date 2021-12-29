@@ -19,7 +19,7 @@ public class BudgetActivityPage extends BaseNativePageObject {
         PageFactory.initElements( new AppiumFieldDecorator(appiumDriver), this);
     }
 
-    public void budgetActivityPageTitle() {
+    public void assertBudgetActivityPageTitle() {
         assertTrue(budgetActivityPageTitle.isDisplayed());
     }
 }

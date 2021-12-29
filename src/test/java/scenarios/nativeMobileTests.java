@@ -20,7 +20,7 @@ public class nativeMobileTests extends BaseTest {
         loginPage.openRegistrationPage();
         registrationPage.registerUser(getEmail(), getUsername(), getPassword());
         loginPage.login(getEmail(), getPassword());
-        budgetActivityPage.budgetActivityPageTitle();
+        budgetActivityPage.assertBudgetActivityPageTitle();
         System.out.println("BudgetActivity page is opened");
     }
 

@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.WebPageObject;
 
-public class GoogleSearchPage extends WebPageObject {
+public class SearchResultPage extends WebPageObject {
 
     @FindBy(xpath = "//div[@role='heading']/div")
     List<WebElement> searchResultHeader;
@@ -15,7 +15,7 @@ public class GoogleSearchPage extends WebPageObject {
     @FindBy(xpath = "//div[@data-content-feature='1']//div[contains(text(),'EPAM')]")
     List<WebElement> searchResultDescription;
 
-    public GoogleSearchPage (AppiumDriver appiumDriver) {
+    public SearchResultPage(AppiumDriver appiumDriver) {
         super(appiumDriver);
     }
 
