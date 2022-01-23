@@ -37,7 +37,7 @@
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
+                        <ts.appium>https://anton_iakimov:${token}@mobilecloud.epam.com/wd/hub</ts.appium>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
@@ -52,6 +52,11 @@
         </plugins>
     </build>
 
+    <properties>
+        <token>l5qKEqGSxOhZKlwPVEGEvKWi7ewGmdOBzHH8SbBNZsrMHj+Fjhoa2VR7D22UVH/q/PLrOw8du8ZLYcUHapQFG5VmYImVQUK3Cu++vinddZvgFOy/JUM1rGiUqiPQFvGKpMEWpZP0OwgHEQhmN5xL4XMgp8tTyaFfGEWDhTt0slsbJd0Q3KrOSI16KkYshkI0/QUQ3GNm/Z/aMa9DGkktDMLBaiBcG8pftsS+VgXBgNFNy3y/7GU/teIZzftImWPVdhCc4ddjDumKtKKt64aJ4oYRE+KnGV2PEdHCrE80NquThdiGvb5g1fe0fkqz38LigqsCMHkHvtrnn1sAMYkYITxUiYBOo2IWuY8Slz4tr/fGNjHaSHmBfResXtoMVa9nrDwdfCZwzkS8W6a5qco1j7kmOapgE6pPSUP59dYzeO+PsIx107bwopciSENXIrFY5g0TNkG2isQFNaWy5q6awj5cpvgrqqygAplIOufe5kuO/C9nj5x4sZD762AAsvYwMazaLuaUuNXaV2iyPFhWMrfHY8zlwNlQpmy+xb5hsBjKWSKiwf0Jv53wBXKKqrSwSAQhe7uMesoEeHyUjy0X65pkvKG11O+AiugOP85eG8wSNzVMZIh0Uw37f7O0iGln4WyJGymVlpDud9xOYxJz9ZIqHTwPZp9U8BDotKyNuGQHnPdyVfgP4QlAHuEbeWBo3ZDIHTPnSIX8LGlJoDG83c95etpEgA1DSaaI1fVC60GIjeLoj7HSjtGtbCd1P9cxTffYBFjpmu2Sxo2nCeHIk1gv12Bs1GQhWAMfQDrueEl/esPu3G3ElTYve7CZbBUqMJuHGwpsfQUgS13CDmAcfvLkLAr75AyprEei5GO+QlSFIK8JiU6WNfuqk2mFK4fkc8e38y/yaemlgQFDwXJnHSw</token>
+    </properties>
+
+
     <profiles>
         <profile>
             <id>native</id>
@@ -64,12 +69,52 @@
         </profile>
 
         <profile>
+            <id>androidCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudAndroidNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iOSCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudiOSNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
             <id>web</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloudAndroidWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iOSCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloudiOSWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
