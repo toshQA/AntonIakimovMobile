@@ -1,5 +1,8 @@
 package setup;
 
+import static java.lang.String.format;
+import static setup.TestProperties.getProperty;
+
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -66,7 +69,7 @@ public class BaseTest implements IDriver {
         if(platformName.equals("iOS")) capabilities.setCapability("automationName","XCUITest");
 
         try {
-            appiumDriver = new AppiumDriver(new URL(System.getProperty("ts.appium")), capabilities);
+            appiumDriver = new AppiumDriver(new URL(format("https://%s:%s@%s", getProperty("userName"), getProperty("token"), getProperty("appiumHub"))), capabilities);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
