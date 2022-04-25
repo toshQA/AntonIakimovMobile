@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Cloud native android mobile testing Suite">
+    <parameter name="appType" value="native"></parameter>
+    <parameter name="udid" value="PL2GAR9880706649"></parameter>
+    <parameter name="platformName" value="Android"></parameter>
+    <parameter name="appPackage" value="platkovsky.alexey.epamtestapp"></parameter>
+    <parameter name="appActivity" value="activities.LoginActivity"></parameter>
+    <test name="Cloud Android Native tests">
+        <groups>
+            <run>
+                <include name="native"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="scenarios.nativeMobileTests"/>
+        </classes>
+    </test>
+</suite>

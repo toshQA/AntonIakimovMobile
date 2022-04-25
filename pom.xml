@@ -36,9 +36,6 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <systemPropertyVariables>
-                        <ts.appium>http://localhost:4723/wd/hub</ts.appium>
-                    </systemPropertyVariables>
                 </configuration>
             </plugin>
             <plugin>
@@ -64,12 +61,52 @@
         </profile>
 
         <profile>
+            <id>androidCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudAndroidNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iOSCloudNative</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>src/test/resources/cloudiOSNativeTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
             <id>web</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
                 <suite.file>./src/test/resources/webTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>androidCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloudAndroidWebTNG.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>iOSCloudWeb</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>./src/test/resources/cloudiOSWebTNG.xml</suite.file>
             </properties>
         </profile>
     </profiles>
